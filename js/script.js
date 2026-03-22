@@ -2,7 +2,7 @@
 const menuToggleButton = document.getElementById('menu-toggle-btn');
 const navigationMenu = document.getElementById('navigation-menu');
 
-// Add a click event listener to the button
+// click event listener for nav button
 menuToggleButton.addEventListener('click', function() {
 
   navigationMenu.classList.toggle('menu-visible');
