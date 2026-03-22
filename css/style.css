@@ -60,6 +60,29 @@ header > nav {
 
 }
 
+/* images */
+.imagedisplay {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.imagedisplay .image-description {
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: white;
+    padding: 10px;
+    text-align: center;
+    opacity: 0; 
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s; 
+}
+.imagedisplay:hover .image-description {
+    visibility: visible;
+    opacity: 1;
+}
 
 /* main content */
 
