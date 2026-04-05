@@ -21,10 +21,10 @@ function toggleTheme() {
 
     // Swap the stylesheet
     if (theme.disabled === true) {
-        newHref = '/ferrari-hub/css/dos.css';
+        newHref = '/css/dos.css';
         document.getElementById('overide-link').disabled = false;
     } else {
-        newHref = '/ferrari-hub/css/style.css';
+        newHref = '/css/style.css';
         document.getElementById('overide-link').disabled = true;
     }
 
