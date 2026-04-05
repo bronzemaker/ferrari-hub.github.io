@@ -1,8 +1,58 @@
 <html>
+<!--
+some changes in the code to note
+
+CSS refactoring.
+
+- added flex box instead of grid to solve issues in sizing and to satisfy the assignment
+= made changes to the sizing and organization of items in the site to fit on mobile devices better
+
+css themes
+
+- added dark mode option which also removes title because its edgy.
+
+theme toggle
+
+- created a toggle in the footer of the website to choose dark mode or naw
+
+
+mobile site responsiveness
+
+- reorganized the header to fit better on mobile.
+- resized videos and images to fit on mobile screens.
+- tested through live server on mobile phone.
+
+
+extra stuff
+
+- website saves theme locally so you  dont have to switch often (spent too long on theme not to mention)
+
+
+
+-->
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link id ="style-link" rel="stylesheet" href="/ferrari-hub/css/style.css">
+    <link id ='overide-link' rel="stylesheet" href="/ferrari-hub/css/dos.css">
+    <script>
+        // Check for a saved theme on page load
+        const savedTheme = localStorage.getItem('selected-theme');
+        if (savedTheme) {
+            if (savedTheme === '/ferrari-hub/css/style.css') {
+
+                document.getElementById('overide-link').disabled = true;
+            } else {
+                document.getElementById('overide-link').disabled = false;
+            }
+        } else {
+            // If no theme is saved, default to the original style
+            document.getElementById('overide-link').disabled = true;
+        }
+    </script>
     <script src="../js/script.js" defer></script>
     <title>cars</title>
 
@@ -12,8 +62,10 @@
 <body>
 <header>
     <img src="../img/hplogo.png" alt="Ferrari Logo">
-    <h1>ITS A FERRARI!!!!</h1>
-    <h2>reach out for more ferrari content</h2>
+    <div class="header-text">
+        <h1>ITS A FERRARI!!!!</h1>
+        <h2>reach out for more ferrari content</h2>
+    </div>
     <nav>
         <div class="navbar-container">
         <button id="menu-toggle-btn">☰</button>
@@ -42,9 +94,15 @@
         <li>Email: <a href="mailto:evansjospeh099@gmail.com">evansjospeh099@gmail.com</a></li>
         <li>Phone: 123-456-7890</li>
         <li>Address: 1738 hello ln, City, State 12345</li>
+
+
 <footer>
     <p>&copy; 2026 My Ferrari Fan Site. All rights reserved.</p>
+    <div class = "dark-mode-toggle">
+        <button onclick="toggleTheme()">☾</button>
+    </div>
 </footer>
+
 
 
 </body>

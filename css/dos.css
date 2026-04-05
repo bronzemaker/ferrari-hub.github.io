@@ -1,0 +1,28 @@
+
+/* header content changes */
+header {
+    background-color: #801300;
+
+}
+
+header > h1 {
+    display: none;
+}
+
+
+
+
+
+/* main content */
+
+main {
+    background-color: rgb(46, 46, 46);
+    color: white;
+}
+
+/* footer content */
+
+footer {
+    background-color: #004a69;
+
+}

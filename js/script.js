@@ -14,3 +14,22 @@ menuToggleButton.addEventListener('click', function() {
     menuToggleButton.textContent = '☰';
   }
 });
+// added the theme toggle function to the script file, this will be called when the user clicks the theme toggle button in the header. It will swap the stylesheet and save the user's choice in local storage so it persists across sessions.
+function toggleTheme() {
+    const theme = document.getElementById('overide-link');
+    let newHref = '';
+
+    // Swap the stylesheet
+    if (theme.disabled === true) {
+        newHref = '/ferrari-hub/css/dos.css';
+        document.getElementById('overide-link').disabled = false;
+    } else {
+        newHref = '/ferrari-hub/css/style.css';
+        document.getElementById('overide-link').disabled = true;
+    }
+
+    
+    
+    // Save the choice permanently in the browser
+    localStorage.setItem('selected-theme', newHref);
+}

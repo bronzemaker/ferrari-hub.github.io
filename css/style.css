@@ -1,7 +1,40 @@
+/*
+some changes in the code to note
+
+CSS refactoring.
+
+- added flex box instead of grid to solve issues in sizing and to satisfy the assignment
+= made changes to the sizing and organization of items in the site to fit on mobile devices better
+
+css themes
+
+- added dark mode option which also removes title because its edgy.
+
+theme toggle
+
+- created a toggle in the footer of the website to choose dark mode or naw
+
+
+mobile site responsiveness
+
+- reorganized the header to fit better on mobile.
+- resized videos and images to fit on mobile screens.
+- tested through live server on mobile phone.
+
+
+extra stuff
+
+- website saves theme locally so you  dont have to switch often (spent too long on theme not to mention)
+
+
+
+*/
+
 /* full body */
 body {
-    display: grid;
-    grid-template-rows: min-content auto 50px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
 }
@@ -13,13 +46,19 @@ header {
     background-color: #ff2800;
     color: white;
     padding: 10px;
-    font-size: 30px;
+    font-size: 100%;
 }
  header > img {
     height: 100px;
     margin-right: 20px;
     align-self: center;
  }
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 header > h1 {
     text-align: left;
     align-self: center;
@@ -56,8 +95,31 @@ header > nav {
 }
 
 .menu-visible {
-  display: block;
+    display: block;
+    transform-origin: right center;
+    animation: back-in-right 0.3s both;
 
+}
+/* back-in-right entrance animation */
+@keyframes back-in-right {
+    0% {
+        transform: translateX(2000px) scale(0.7);
+        opacity: 0;
+    }
+    80% {
+        transform: translateX(-10px) scale(0.98);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+/* image size */
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* images hover setup*/
@@ -89,13 +151,25 @@ header > nav {
 main {
     padding: 20px;
     text-align: center;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 main > .main-image {
     max-width: 100%;
     height: auto;
     margin-top: 20px;
 }
+/* rules for the video links  (added for sizing issues with mobile and what not) */
 
+iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    margin-top: 20px;
+}
 
 /* footer content */
 
@@ -104,4 +178,18 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dark-mode-toggle > button {
+    background-color: transparent;
+    border: none;
+    text-align: right;
+    margin-left: 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
 }
