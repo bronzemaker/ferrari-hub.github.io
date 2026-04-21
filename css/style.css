@@ -193,3 +193,12 @@ footer {
     color: white;
     font-weight: bold;
 }
+
+/* Content sections visibility */
+.content-section {
+    display: block;
+}
+
+.content-section.hidden {
+    display: none;
+}

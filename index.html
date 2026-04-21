@@ -1,46 +1,20 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
-some changes in the code to note
-
-CSS refactoring.
-
-- added flex box instead of grid to solve issues in sizing and to satisfy the assignment
-= made changes to the sizing and organization of items in the site to fit on mobile devices better
-
-css themes
-
-- added dark mode option which also removes title because its edgy.
-
-theme toggle
-
-- created a toggle in the footer of the website to choose dark mode or naw
-
-
-mobile site responsiveness
-
-- reorganized the header to fit better on mobile.
-- resized videos and images to fit on mobile screens.
-- tested through live server on mobile phone.
-
-
-extra stuff
-
-- website saves theme locally so you  dont have to switch often (spent too long on theme not to mention)
-
-
-
+Refactored to single-page application (SPA)
+All content sections are now on index.html with show/hide functionality
+Navigation triggers section visibility instead of page loads
 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link id ="style-link" rel="stylesheet" href="/css/style.css">
     <link id ='overide-link' rel="stylesheet" href="/css/dos.css">
+    <link rel="stylesheet" href="/css/form.css">
     <script>
         // Check for a saved theme on page load
         const savedTheme = localStorage.getItem('selected-theme');
         if (savedTheme) {
             if (savedTheme === '/css/style.css') {
-
                 document.getElementById('overide-link').disabled = true;
             } else {
                 document.getElementById('overide-link').disabled = false;
@@ -51,46 +25,240 @@ extra stuff
         }
     </script>
     
-    <script src="/js/script.js" defer></script>
+    <script src="/js/validation.js" defer></script>
+    <script src="/js/page.js" defer></script>
+    <script src="/js/main.js" defer></script>
     <title>cars</title>
-
-
-
 </head>
 <body>
 
 <header>
-    
-        <a class = "logo" href = "/index.html"><img src="img/hplogo.png" alt="Ferrari Logo(iykyk)"></a>
+    <a class = "logo" href = "javascript:showSection('home')"><img src="img/hplogo.png" alt="Ferrari Logo(iykyk)"></a>
     <h1>ITS A FERRARI!!!!</h1>
-    <!-- navigation (took me forever to make it work) -->
+    <!-- navigation -->
     <nav>
         <div class="navbar-container">
         <button id="menu-toggle-btn">☰</button>
     
-   
-    <div id="navigation-menu" class="menu-hidden">
-      <a href="index.html">Home</a>
-      <a href="content/photos.html">photos of ferarri</a>
-      <a href="content/media.html">ferarri video</a>
-      <a href="content/banana.html">banana</a>
-      <a href="content/contact.html">Contact me</a>
+        <div id="navigation-menu" class="menu-hidden">
+            <a href="javascript:showSection('home')">Home</a>
+            <a href="javascript:showSection('photos')">photos of ferarri</a>
+            <a href="javascript:showSection('media')">ferarri video</a>
+            <a href="javascript:showSection('visitor-registration')">Log Visit</a>
+            <a href="javascript:showSection('banana')">banana</a>
+            <a href="javascript:showSection('contact')">Contact me</a>
         </div>
-    </div>
+        </div>
     </nav>
 
 </header>
-<!-- main content thought it was cool -->
-<main>
+
+<!-- Home Section -->
+<main id="home-section" class="content-section">
     <h2>Welcome to my rant page for the scuderia ferrari f1 team</h2>
     <img src="img/2025ferraricarright.avif" alt="ferrari f1 car" class="main-image">
-
     <p>we love ferrari! through all their achievements and legacy. through their ups and downs. 
         they may be idiots, but they are our idiots. this page is dedicated to their great moments. 
         this page is also dedicated to the study of the suffering of charles leclerc, and how he still is at ferrari.</p>
 </main>
 
+<!-- Photos Section -->
+<main id="photos-section" class="content-section hidden">
+    <h2>Photos of Ferrari</h2>
+    <!-- each image has a figcaption that appears when hovered over-->
+    <figure class="imagedisplay">
+        <img src="/img/alberto.jpg" alt="alberto" class="main-image">
+        <figcaption class="image-description">Alberto Ascari, one of Ferrari's greatest drivers</figcaption>
+    </figure>
+    <figure class="imagedisplay">
+        <img src="/img/lewis hamilton -1.jpg" alt="lewis hamilton" class="main-image">
+        <figcaption class="image-description">Lewis Hamilton, one of the goats</figcaption>
+    </figure>
+    <figure class="imagedisplay">
+        <img src="/img/schumacker.jpg" alt="michael schumacher" class="main-image">
+        <figcaption class="image-description">Michael Schumacher, the greatest of all time</figcaption>
+    </figure>
+</main>
 
+<!-- Media Section -->
+<main id="media-section" class="content-section hidden">
+    <h2>Ferrari Video</h2>
+    <iframe width="1399" height="787" src="https://www.youtube.com/embed/1aDyB5HG8iw" title="Lewis Hamilton & Charles Leclerc Attempt an 'IMPOSSIBLE' Chopstick Challenge!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</main>
+
+<!-- Banana Section -->
+<main id="banana-section" class="content-section hidden">
+    <h2>Banana Leclerc</h2>
+    <!-- its a photo of charles leclerc as a banana (let me have my fun)-->
+    <img src="/img/bananaLeclerc.jpg" alt="banana leclerc" class="main-image">
+    <p>Charles Leclerc as a banana: "I've never looked so good"</p>
+    <iframe width="1399" height="787" src="https://www.youtube.com/embed/cNPGDx7nBw4" title="Charles Leclerc as a banana: &quot;I&#39;ve never looked so good&quot;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</main>
+
+<!-- Contact Section -->
+ <main id="contact-section" class="content-section hidden">
+    <h2>Contact me</h2>
+    <p>If you have any questions or want to share your love for Ferrari, feel free to reach out!</p>
+    <ul>
+        <li>Email: <a href="mailto:evansjoseph099@gmail.com">evansjoseph099@gmail.com</a></li>
+        <li>Phone: 123-456-7890</li>
+        <li>Address: 1738 hello ln, City, State 12345</li>
+    </ul>
+</main>
+
+<!-- Visitor Registration Section -->
+<main id="visitor-registration-section" class="content-section hidden">
+    <div class="form-container">
+        <h2>Visitor Registration</h2>
+        <p>Thank you for visiting! Please fill out this form to log your visit.</p>
+        
+        <div id="successMessage" class="success-message">
+            ✓ Thank you for registering! Your visit has been logged.
+        </div>
+
+        <form id="visitorForm" novalidate>
+            <!-- Personal Information Section -->
+            <div class="form-section">
+                <h3>Personal Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">
+                            First Name
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+                        <div class="errorMsg"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">
+                            Last Name
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+                        <div class="errorMsg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Section -->
+            <div class="form-section">
+                <h3>Address Information</h3>
+                
+                <div class="form-group">
+                    <label for="address">
+                        Address
+                        <span class="required">*</span>
+                    </label>
+                    <input type="text" id="address" name="address" placeholder="Street address">
+                    <div class="errorMsg"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">
+                            City
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" id="city" name="city" placeholder="City">
+                        <div class="errorMsg"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">
+                            State
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" id="state" name="state" placeholder="CA" maxlength="2">
+                        <div class="errorMsg"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zip">
+                            Zip Code
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" id="zip" name="zip" placeholder="12345">
+                        <div class="errorMsg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="form-section">
+                <h3>Contact Information</h3>
+                
+                <div class="form-group">
+                    <label for="phone">
+                        Cell Phone
+                        <span class="required">*</span>
+                    </label>
+                    <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                    <div class="errorMsg"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        Email Address
+                        <span class="required">*</span>
+                    </label>
+                    <input type="email" id="email" name="email" placeholder="user@example.com">
+                    <div class="errorMsg"></div>
+                </div>
+            </div>
+
+            <!-- How Did You Find Us Section -->
+            <div class="form-section">
+                <h3>How Did You Find My Page?
+                    <span class="required">*</span>
+                </h3>
+                
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="found-internet" name="foundUs" value="Internet">
+                        <label for="found-internet">Internet Search</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="found-friend" name="foundUs" value="Friend">
+                        <label for="found-friend">Friend Recommendation</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="found-google" name="foundUs" value="Google">
+                        <label for="found-google">Google</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="found-social" name="foundUs" value="Social Media">
+                        <label for="found-social">Social Media</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="found-other" name="foundUs" value="Other">
+                        <label for="found-other">Other</label>
+                    </div>
+                </div>
+                <div class="errorMsg" style="margin-top: 10px;"></div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="form-section">
+                <h3>Comments</h3>
+                
+                <div class="form-group">
+                    <label for="comments">
+                        Comments (Optional)
+                    </label>
+                    <textarea id="comments" name="comments" placeholder="Share your thoughts about Ferrari..."></textarea>
+                </div>
+            </div>
+
+            <!-- Form Buttons -->
+            <div class="form-buttons">
+                <button type="submit" id="submitBtn">Submit Registration</button>
+                <button type="reset">Clear Form</button>
+            </div>
+        </form>
+    </div>
+</main>
 
 <footer>
     <p>&copy; 2026 My Ferrari Fan Site. All rights reserved.</p>
